@@ -1,4 +1,7 @@
+import 'package:ecom_bloc/features/cart/ui/cart.dart';
 import 'package:ecom_bloc/features/home/bloc/home_bloc.dart';
+import 'package:ecom_bloc/features/wishlist/ui/wishlist.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +19,20 @@ class _HomeState extends State<Home> {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
 
-      // listenWhen: (previous, current) {},
-      // buildWhen: (previous, current) {},
+      listenWhen: (previous, current) => current is HomeActionState,
+      buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is HomeNavigateToCartPageActionState) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Cart()),
+          );
+        } else if (state is HomeNavigateToWishlistPageActionState) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Wishlist()),
+          );
+        }
       },
       builder: (context, state) {
         return Scaffold(
