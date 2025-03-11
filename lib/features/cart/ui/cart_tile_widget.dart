@@ -1,14 +1,14 @@
-import 'package:ecom_bloc/features/home/bloc/home_bloc.dart';
+import 'package:ecom_bloc/features/cart/bloc/cart_bloc.dart';
 import 'package:ecom_bloc/features/home/models/product_data_model.dart';
 import 'package:flutter/material.dart';
 
-class ProductTileWidget extends StatelessWidget {
+class CartTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
-  final HomeBloc homeBloc;
-  const ProductTileWidget({
+  final CartBloc cartBloc;
+  const CartTileWidget({
     super.key,
     required this.productDataModel,
-    required this.homeBloc,
+    required this.cartBloc,
   });
 
   @override
@@ -63,24 +63,24 @@ class ProductTileWidget extends StatelessWidget {
                     IconButton(
                       //WISHLIST BUTTON
                       onPressed: () {
-                        homeBloc.add(
-                          HomeProductWishlistButtonClickedEvent(
-                            clickedProduct: productDataModel,
-                          ),
-                        );
+                        // cartBloc.add(
+                        //   HomeProductWishlistButtonClickedEvent(
+                        //     clickedProduct: productDataModel,
+                        //   ),
+                        // );
                       },
                       icon: Icon(Icons.favorite_border_outlined),
                     ),
                     IconButton(
                       //CART BUTTON
                       onPressed: () {
-                        homeBloc.add(
-                          HomeProductCartButtonClickedEvent(
-                            clickedProduct: productDataModel,
-                          ),
-                        );
+                        // homeBloc.add(
+                        //   HomeProductCartButtonClickedEvent(
+                        //     clickedProduct: productDataModel,
+                        //   ),
+                        // );
                       },
-                      icon: Icon(Icons.shopping_bag_outlined),
+                      icon: Icon(Icons.shopping_bag),
                     ),
                   ],
                 ),
